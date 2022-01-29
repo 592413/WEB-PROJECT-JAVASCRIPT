@@ -14,8 +14,34 @@ const div=document.querySelector('div');
 
 //div.innerHTML=div.innerHTML+'<p>Not a good choice. As it rerenders. Performance lost</p>';
 
+
+//insertAdjacentHTML is not a good choice as we dont have direct element access.
 div.insertAdjacentHTML("beforeend",'<div>Still a better Choice. As it is only rendered</div>');
 
+//Hence we will be using document.createElement
+
+const li=document.createElement('li');
+
+li.textContent='item 4';
+
+const list=document.querySelector('ul');
+
+list.appendChild(li);
+
+//Inserting after second node.
+const secondLi=list.children[1];
+const newLi=document.createElement('li');
+newLi.textContent='ItemBaps';
+
+secondLi.insertAdjacentElement('afterEnd',newLi);
+
+//Inserting Dom Elements.
+
+list.prepend(li);
+
+list.lastElementChild.before(li);
+
+list.firstElementChild.replaceWith(li);
 
 
 button.addEventListener('click', () => {
